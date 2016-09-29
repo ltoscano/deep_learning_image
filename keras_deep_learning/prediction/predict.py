@@ -25,9 +25,15 @@ class Classifier():
         
         p = self.__forward_model.predict(im)
         to_return = {}
+        max_value = 0
+        max_i = 0
         for i in range(p.shape[1]):
             value = p[0, i]
-            to_return[self.__labels[i]] = value
+            if value > max_value:
+                max_value = value
+                max_i = i
+        
+        to_return['character'] = self.__labels[max_i]
         return to_return
     
     def close_session(self):
