@@ -15,6 +15,7 @@ import base64
 app = Flask(__name__)
 app.secret_key = "super secret key"
 
+
 classifier = None
 
 def signal_handler(signal, frame):
@@ -24,8 +25,16 @@ def signal_handler(signal, frame):
     
 signal.signal(signal.SIGINT, signal_handler)
 
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    
+    return response
+
 @app.route('/characters/classify', methods = ['POST'])
-@crossdomain(origin='*')
+
 def classify():
     if request.method == 'POST':
         binary = request.stream.read()
