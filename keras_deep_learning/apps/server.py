@@ -25,6 +25,7 @@ def signal_handler(signal, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 @app.route('/characters/classify', methods = ['POST'])
+@crossdomain(origin='*')
 def classify():
     if request.method == 'POST':
         binary = request.stream.read()
