@@ -1,0 +1,6 @@
+{
+	"model_path": "/home/ubuntu/disney_characters/data/checkpoints/weights_0_0.001_0.0001.hdf5",
+	"labels_file": "/home/ubuntu/disney_characters/data/labels.txt",
+	"port": 5000,
+	"model_type": "vgg16"
+}
