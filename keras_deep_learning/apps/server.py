@@ -27,6 +27,7 @@ signal.signal(signal.SIGINT, signal_handler)
 def classify():
     if request.method == 'POST':
         binary = request.stream.read()
+        print(binary)
         im = imageio.imread(binary)
         results = classifier.classify(im)
         return str(results)
