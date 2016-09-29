@@ -3,7 +3,7 @@ Created on Sep 29, 2016
 
 @author: dearj019
 '''
-import vgg16
+from keras_deep_learning.models import vgg16
 
 def preprocess_factory(model_type):
     
