@@ -13,10 +13,9 @@ import numpy as np
 
 def preprocess(im):
     mean_pixel = [103.939, 116.779, 123.68]
-    try:
-        pil_img = PIL.Image.fromarray(im)
-    except:                
-        return None    
+    
+    pil_img = PIL.Image.fromarray(im)
+                        
     resized = pil_img.resize((224, 224))
     im = np.asarray(resized).astype(np.float32)
             

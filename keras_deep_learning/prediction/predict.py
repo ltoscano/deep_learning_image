@@ -20,6 +20,9 @@ class Classifier():
          
     def classify(self, im):
         im = self.__preprocess_function(im)
+        if im == None:
+            return {}
+        
         p = self.__forward_model.predict(im)
         to_return = {}
         for i in range(p.shape[1]):
