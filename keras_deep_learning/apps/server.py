@@ -9,6 +9,7 @@ from flask import Flask, jsonify, request
 import json
 import signal
 import sys
+import imageio
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -26,7 +27,8 @@ signal.signal(signal.SIGINT, signal_handler)
 def classify():
     if request.method == 'POST':
         binary = request.stream.read()
-        results = classifier.classify(binary)
+        im = imageio.imread(binary)
+        results = classifier.classify(im)
         return str(results)
 
 if __name__ == "__main__":
