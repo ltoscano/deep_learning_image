@@ -20,7 +20,7 @@ class Classifier():
          
     def classify(self, im):
         im = self.__preprocess_function(im)
-        if im == None:
+        if im is None:
             return {}
         
         p = self.__forward_model.predict(im)
