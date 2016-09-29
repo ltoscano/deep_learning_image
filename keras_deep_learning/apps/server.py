@@ -10,6 +10,7 @@ import json
 import signal
 import sys
 import imageio
+import base64
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -27,8 +28,9 @@ signal.signal(signal.SIGINT, signal_handler)
 def classify():
     if request.method == 'POST':
         binary = request.stream.read()
+        decoded = base64.decodestring(binary)
         print(binary)
-        im = imageio.imread(binary)
+        im = imageio.imread(decoded)
         results = classifier.classify(im)
         return str(results)
 
