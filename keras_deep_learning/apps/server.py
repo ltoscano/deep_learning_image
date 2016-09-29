@@ -38,8 +38,9 @@ def after_request(response):
 def classify():
     if request.method == 'POST':
         binary = request.stream.read()
+        decoded = base64.decodestring(binary)
         print(binary)
-        im = imageio.imread(binary)
+        im = imageio.imread(decoded)
         results = classifier.classify(im)
         return str(results)
 
