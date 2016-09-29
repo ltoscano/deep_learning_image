@@ -24,13 +24,16 @@ def preprocess(im):
             
     #Transforming RGB into BGR
     np.roll(im, 1, axis = -1)
-    print(im.shape)            
-    for c in range(3):
-        im[:, :, c] = im[:, :, c] - mean_pixel[c]            
+    try:           
+        for c in range(3):
+            im[:, :, c] = im[:, :, c] - mean_pixel[c]
+    except:
+        return None            
     
     im = im.astype(np.float32, copy = False)
     im = im.transpose((2, 0, 1))
     im = np.expand_dims(im, axis = 0)
+    return im
     
 def model_forward(regr, no_labels):
     model = Sequential()
