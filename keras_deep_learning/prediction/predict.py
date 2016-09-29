@@ -26,3 +26,6 @@ class Classifier():
             value = p[0, i]
             to_return[self.__labels[i]] = value
         return to_return
+    
+    def close_session(self):
+        pass
