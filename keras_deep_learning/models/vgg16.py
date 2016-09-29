@@ -14,18 +14,19 @@ import numpy as np
 def preprocess(im):
     mean_pixel = [103.939, 116.779, 123.68]
     
-    pil_img = PIL.Image.fromarray(im)
+    try:
+        pil_img = PIL.Image.fromarray(im)
+    except:
+        return None
                         
     resized = pil_img.resize((224, 224))
     im = np.asarray(resized).astype(np.float32)
             
     #Transforming RGB into BGR
     np.roll(im, 1, axis = -1)
-    try:            
-        for c in range(3):
-            im[:, :, c] = im[:, :, c] - mean_pixel[c]            
-    except:
-        return None
+    print(im.shape)            
+    for c in range(3):
+        im[:, :, c] = im[:, :, c] - mean_pixel[c]            
     
     im = im.astype(np.float32, copy = False)
     im = im.transpose((2, 0, 1))
