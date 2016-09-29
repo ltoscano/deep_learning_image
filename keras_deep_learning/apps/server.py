@@ -40,7 +40,7 @@ if __name__ == "__main__":
     port = conf['port']
     model_type = conf['model_type']
     with open(labels_file) as f:
-        labels = f.read().split("\n")
+        labels = f.read().strip().split("\n")
     
     classifier = Classifier(model_type, model_path, None, labels)
     app.run(host = '0.0.0.0', port = port)
