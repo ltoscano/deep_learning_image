@@ -21,7 +21,7 @@ def preprocess(im):
                         
     resized = pil_img.resize((224, 224))
     im = np.asarray(resized).astype(np.float32)
-    if im.shape != (3, 224, 224):
+    if im.shape != (1, 3, 224, 224):
         return None
             
     #Transforming RGB into BGR
