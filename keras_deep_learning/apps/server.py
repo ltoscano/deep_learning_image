@@ -27,7 +27,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 @app.errorhandler(Exception)
 def all_exception_handler(error):
-    return 'Error', 500
+    return 'Error: Unsupported format', 500
 
 @app.after_request
 def after_request(response):
