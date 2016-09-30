@@ -25,12 +25,15 @@ def signal_handler(signal, frame):
     
 signal.signal(signal.SIGINT, signal_handler)
 
+@app.errorhandler(Exception)
+def all_exception_handler(error):
+    return 'Error', 500
+
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    
     return response
 
 @app.route('/characters/classify', methods = ['POST'])
