@@ -34,7 +34,6 @@ def after_request(response):
     return response
 
 @app.route('/characters/classify', methods = ['POST'])
-
 def classify():
     if request.method == 'POST':
         binary = request.stream.read()
