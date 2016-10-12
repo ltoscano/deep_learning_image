@@ -1,0 +1,5 @@
+{
+	"images_folder": "/Users/dearj019/Downloads/PKLot/PKLotSegmentedSelected",
+	"processed_output_folder": "/Users/dearj019/Downloads/PKLot/PKLotPreprocessed",
+	"model_type": "vgg16"
+}

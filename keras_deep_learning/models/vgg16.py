@@ -21,7 +21,7 @@ def preprocess(im):
                         
     resized = pil_img.resize((224, 224))
     im = np.asarray(resized).astype(np.float32)
-    print(im.shape)
+    
     if im.shape != (224, 224, 3):
         raise 'Unsupported format'
             
