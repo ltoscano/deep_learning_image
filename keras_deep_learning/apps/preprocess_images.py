@@ -29,11 +29,8 @@ def preprocess_images(images_folder, processed_output_folder, model_type):
         
         for image in images:
             image_path = os.path.join(images_folder, label, image)
-            try:
-                im = imageio.imread(image_path)
-            except:
-                print(image_path)
-                continue
+            
+            im = imageio.imread(image_path)
             
             im = preprocess(im)
             if im == None:

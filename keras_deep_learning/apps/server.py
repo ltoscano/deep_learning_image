@@ -46,15 +46,19 @@ def classify():
         return str(results)
 
 if __name__ == "__main__":
-    with open(sys.argv[1]) as f:
-        conf = json.load(f)
+    #with open(sys.argv[1]) as f:
+    #    conf = json.load(f)
     
-    model_path = conf['model_path']
-    labels_file = conf['labels_file']
-    port = conf['port']
-    model_type = conf['model_type']
-    with open(labels_file) as f:
-        labels = f.read().strip().split("\n")
+    #model_path = conf['model_path']
+    #labels_file = conf['labels_file']
+    #port = conf['port']
+    port = 5000
+    labels = ['ariel', 'baloo', 'baymax', 'mickey', 'minnie']
+    model_type = 'vgg16'
+    model_path = "/Users/dearj019/DISNEY_CHARACTERS/experiments/experiment1/weights_0_0.0001_0.0001.hdf5"
+    #model_type = conf['model_type']
+    #with open(labels_file) as f:
+    #    labels = f.read().strip().split("\n")
     
     classifier = Classifier(model_type, model_path, None, labels)
     app.run(host = '0.0.0.0', port = port)
